@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
-    "dev": "pm2 start src/index.js --watch --interpreter node",
-    "test": "jest --watch"
+    "dev": "pm2 start src/index.js --watchAll --interpreter node",
+    "test": "jest --watchAll"
   },
   "devDependencies": {
     "eslint": "^5.3.0",
