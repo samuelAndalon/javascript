@@ -1,15 +1,4 @@
-const {rotateArray} = require('../index.js');
-const {getPeriod} = require('../index.js');
-
-describe('rotateArray', () => {
-  it('should work', () => {
-    expect(
-      rotateArray([1, 2, 3, 4, 5], 10000000000000002)
-    ).toEqual(
-      [4, 5, 1, 2, 3]
-    );
-  });
-});
+const { getPeriod } = require('../getPeriod');
 
 describe('getPeriod', () => {
   it('should find n = 3 and P = "ab" for "ababab"', () => {
