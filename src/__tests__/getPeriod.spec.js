@@ -1,6 +1,7 @@
 const { getPeriod } = require('../getPeriod');
 
 describe('getPeriod', () => {
+  
   it('should find n = 3 and P = "ab" for "ababab"', () => {
     expect(
       getPeriod('ababab')
