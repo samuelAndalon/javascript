@@ -1,0 +1,2301 @@
+{
+  "InspectionReport": {
+    "property": {
+      "structures": {
+        "attachmentType": {
+          "Metadata": [
+            {
+              "Name": "attachmentType",
+              "DataType": "Enumerated",
+              "DisplayText": "Attachment Type",
+              "Description": "User to select the best option to identify whether the structure is attached to another structure.\n\nAs the user faces the property, the attachment type for a 'Semi-Detached' property should reflect the side that is not attached (e.g., A structure is 'Left Semi-Detached' if the user faces an end unit that does not have a unit to the left). ",
+              "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('structureType')=='DWELLING'; }",
+              "Enumeration": [
+                {
+                  "Key": "DETACHED",
+                  "Value": "Detached"
+                },
+                {
+                  "Key": "ATTACHED",
+                  "Value": "Attached"
+                },
+                {
+                  "Key": "LEFT_SEMI_DETACHED",
+                  "Value": "Left Semi-detached/Duplex"
+                },
+                {
+                  "Key": "RIGHT_SEMI_DETACHED",
+                  "Value": "Right Semi-detached/Duplex"
+                }
+              ],
+              "UITooltip": "Select the best option to describe whether the structure is detached or how it is attached.",
+              "HelpTextId": "539911fdeb8742f297a2c7a73b616917"
+            }
+          ]
+        },
+        "structureType": {
+          "Metadata": [
+            {
+              "Name": "structureType",
+              "DataType": "Enumerated",
+              "DisplayText": "Structure Type",
+              "Description": "Select the best option to classify all permanently affixed structures. Structures greater than 200 square feet finished area that include a kitchen and bathroom should be identified as a dwelling.",
+              "Required": "True",
+              "Enumeration": [
+                {
+                  "Key": "DWELLING",
+                  "Value": "Dwelling"
+                },
+                {
+                  "Key": "OUTBUILDING",
+                  "Value": "Outbuilding",
+                  "Children": [
+                    {
+                      "Key": "GREENHOUSE",
+                      "Value": "Greenhouse"
+                    },
+                    {
+                      "Key": "TOOLSHED",
+                      "Value": "Toolshed"
+                    },
+                    {
+                      "Key": "WORKSHOP",
+                      "Value": "Workshop"
+                    },
+                    {
+                      "Key": "BARN",
+                      "Value": "Barn"
+                    },
+                    {
+                      "Key": "POLE_BUILDING",
+                      "Value": "Pole Building"
+                    },
+                    {
+                      "Key": "STABLES",
+                      "Value": "Stables"
+                    },
+                    {
+                      "Key": "RIDING_ARENA",
+                      "Value": "Riding Arena"
+                    },
+                    {
+                      "Key": "POOL_HOUSE",
+                      "Value": "Poolhouse"
+                    }
+                  ]
+                }
+              ],
+              "UITooltip": "Identify the type of structure.  Select the option that best describes the building.",
+              "HelpTextId": "7d60daf09ea3463d9e483cde0e4a7eaf"
+            }
+          ]
+        },
+        "constructionType": {
+          "Metadata": [
+            {
+              "Name": "constructionType",
+              "DataType": "Enumerated",
+              "DisplayText": "Construction Type",
+              "Description": "Indicate the construction type that best describes the construction of the majority of the structure.",
+              "Required": "True",
+              "Enumeration": [
+                {
+                  "Key": "",
+                  "Value": "Conventional",
+                  "Children": [
+                    {
+                      "Key": "FRAME",
+                      "Value": "Frame"
+                    },
+                    {
+                      "Key": "MASONRY",
+                      "Value": "Masonry"
+                    }
+                  ]
+                },
+                {
+                  "Key": "",
+                  "Value": "Unconventional",
+                  "Children": [
+                    {
+                      "Key": "LOG",
+                      "Value": "Log"
+                    },
+                    {
+                      "Key": "GEODESIC",
+                      "Value": "Geodesic"
+                    },
+                    {
+                      "Key": "EARTH_BERM",
+                      "Value": "Earth Berm"
+                    }
+                  ]
+                },
+                {
+                  "Key": "",
+                  "Value": "Manufactured",
+                  "Children": [
+                    {
+                      "Key": "MANUFACTURED",
+                      "Value": "Manufactured"
+                    },
+                    {
+                      "Key": "MODULAR",
+                      "Value": "Modular"
+                    }
+                  ]
+                }
+              ],
+              "UITooltip": "Select the option that best describes the construction type.",
+              "HelpTextId": "f1ed7ca78d314a4cb5e1b43eea3be470"
+            }
+          ]
+        },
+        "constructionStatus": {
+          "Metadata": [
+            {
+              "Name": "constructionStatus",
+              "DataType": "Enumerated",
+              "DisplayText": "Construction Status",
+              "Description": "User to select the option that best describes the structure’s construction status.",
+              "Required": "True",
+              "Enumeration": [
+                {
+                  "Key": "COMPLETE",
+                  "Value": "Complete"
+                },
+                {
+                  "Key": "INCOMPLETE",
+                  "Value": "Incomplete",
+                  "Children": [
+                    {
+                      "Key": "INCOMPLETE_CONSTRUCTION",
+                      "Value": "Incomplete Construction"
+                    },
+                    {
+                      "Key": "INCOMPLETE_RENOVATION_CONSTRUCTION",
+                      "Value": "Incomplete Renovation"
+                    },
+                    {
+                      "Key": "PROPOSED",
+                      "Value": "Proposed"
+                    }
+                  ]
+                }
+              ],
+              "UITooltip": "What is the structure’s current status?",
+              "HelpTextId": "932ca75d2aad42ad86d61c23904e556f"
+            }
+          ]
+        },
+        "units": {
+          "levels": {
+            "rooms": {
+              "roomType": {
+                "Metadata": [
+                  {
+                    "Name": "roomType",
+                    "DataType": "Enumerated",
+                    "DisplayText": "Room Type",
+                    "Description": "User to select the best option to identify the room. \n\nA bedroom is defined as having a window, closet, and door that can be closed. The bedroom should have two means of egress, i.e. the door and window.",
+                    "Required": "True",
+                    "Enumeration": [
+                      {
+                        "Key": "FOYER",
+                        "Value": "Foyer"
+                      },
+                      {
+                        "Key": "LIVING_ROOM",
+                        "Value": "Living Room"
+                      },
+                      {
+                        "Key": "DINING_ROOM",
+                        "Value": "Dining Room"
+                      },
+                      {
+                        "Key": "KITCHEN",
+                        "Value": "Kitchen"
+                      },
+                      {
+                        "Key": "DEN",
+                        "Value": "Den"
+                      },
+                      {
+                        "Key": "FAMILY_ROOM",
+                        "Value": "Family Room"
+                      },
+                      {
+                        "Key": "REC_ROOM",
+                        "Value": "Rec Room"
+                      },
+                      {
+                        "Key": "BEDROOM",
+                        "Value": "Bedroom"
+                      },
+                      {
+                        "Key": "BATHROOM",
+                        "Value": "Bathroom"
+                      },
+                      {
+                        "Key": "LAUNDRY_ROOM",
+                        "Value": "Laundry Room"
+                      },
+                      {
+                        "Key": "HALL",
+                        "Value": "Hall"
+                      },
+                      {
+                        "Key": "LIBRARY",
+                        "Value": "Library"
+                      },
+                      {
+                        "Key": "MEDIA",
+                        "Value": "Media"
+                      },
+                      {
+                        "Key": "OFFICE",
+                        "Value": "Office"
+                      },
+                      {
+                        "Key": "UTILITY",
+                        "Value": "Utility"
+                      },
+                      {
+                        "Key": "WORKSHOP",
+                        "Value": "Workshop"
+                      },
+                      {
+                        "Key": "BUTLERS_PANTRY",
+                        "Value": "Butlers Pantry"
+                      },
+                      {
+                        "Key": "OTHER_ROOM",
+                        "Value": "Other Room"
+                      }
+                    ],
+                    "UITooltip": "What type of room is this? Select the option that best matches.",
+                    "HelpTextId": "684129ec1c0f465cbd996d53d81a68c5"
+                  }
+                ]
+              },
+              "otherRoomTypeDescription": {
+                "Metadata": [
+                  {
+                    "Name": "otherRoomTypeDescription",
+                    "DataType": "String",
+                    "DisplayText": "Room Name",
+                    "Description": "User to enter free form text to describe the type of room when room type of 'OTHER_ROOM' is selected. The acceptable string length is 100 characters or less.",
+                    "UITooltip": "You selected 'Other' room type. Provide a name for the room.",
+                    "UIControl": "textarea",
+                    "HelpTextId": "7e26cb6e8d984589a9c10fca3e5b0432"
+                  }
+                ]
+              },
+              "interiorDeficiencies": {
+                "deficiencyName": {
+                  "Metadata": [
+                    {
+                      "Name": "deficiencyName",
+                      "DataType": "Enumerated",
+                      "DisplayText": "Deficiency Name",
+                      "Description": "User to identify any room components that are deficient.",
+                      "Required": "True",
+                      "Enumeration": [
+                        {
+                          "Key": "NONE_OBSERVED",
+                          "Value": "None Observed"
+                        },
+                        {
+                          "Key": "FLOORING",
+                          "Value": "Flooring"
+                        },
+                        {
+                          "Key": "PLUMBING_FIXTURES",
+                          "Value": "Plumbing Fixtures"
+                        },
+                        {
+                          "Key": "ELECTRICAL_FIXTURES",
+                          "Value": "Electrical Fixtures"
+                        },
+                        {
+                          "Key": "CABINET_COUNTERTOPS",
+                          "Value": "Cabinet Countertops"
+                        },
+                        {
+                          "Key": "APPLIANCES",
+                          "Value": "Appliances"
+                        },
+                        {
+                          "Key": "WALLS",
+                          "Value": "Walls"
+                        },
+                        {
+                          "Key": "CEILING",
+                          "Value": "Ceiling"
+                        },
+                        {
+                          "Key": "OTHER",
+                          "Value": "Other"
+                        }
+                      ],
+                      "UITooltip": "Are there any components of this room with obvious damage or wear and tear that need to be addressed?",
+                      "HelpTextId": "904c1a2a8e1248d0b771ff9241d824f2"
+                    }
+                  ]
+                },
+                "deficiencyType": {
+                  "Metadata": [
+                    {
+                      "Name": "deficiencyType",
+                      "DataType": "Enumerated",
+                      "DisplayText": "Deficiency Type",
+                      "Description": "User to identify the type of deficiency of the component selected.",
+                      "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('deficiencyName')!='NONE_OBSERVED'}",
+                      "Enumeration": [
+                        {
+                          "Key": "EXCESSIVE_WEAR",
+                          "Value": "Excessive Wear and Tear"
+                        },
+                        {
+                          "Key": "DAMAGE",
+                          "Value": "Damaged"
+                        },
+                        {
+                          "Key": "EVIDENCE_OF_MOLD",
+                          "Value": "Mold Evident"
+                        },
+                        {
+                          "Key": "EVIDENCE_OF_INFESTATION",
+                          "Value": "Infestation Evident"
+                        },
+                        {
+                          "Key": "MISSING",
+                          "Value": "Missing"
+                        },
+                        {
+                          "Key": "POOR_FUNCTIONAL_UTILITY",
+                          "Value": "Functional Concerns"
+                        },
+                        {
+                          "Key": "OTHER",
+                          "Value": "Other"
+                        }
+                      ],
+                      "UITooltip": "What type of damage or wear and tear did you observe?",
+                      "HelpTextId": "7a259c6eabec412a99b04231e359647f"
+                    }
+                  ]
+                },
+                "interiorDeficiencySeverity": {
+                  "Metadata": [
+                    {
+                      "Name": "interiorDeficiencySeverity",
+                      "DataType": "Boolean",
+                      "DisplayText": "Is Habitability Affected?",
+                      "Description": "User to select whether the deficient item does (TRUE) or does not (FALSE) impact the safety, structural integrity, or habitability of the affected room.",
+                      "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('deficiencyName')!='NONE_OBSERVED'}",
+                      "UITooltip": "Does the deficiency impact the safety, structural integrity, or habitability of the room?",
+                      "HelpTextId": "867bca4eb64547819196586a61c658b9"
+                    }
+                  ]
+                },
+                "descriptionInteriorDeficiency": {
+                  "Metadata": [
+                    {
+                      "Name": "descriptionInteriorDeficiency",
+                      "DataType": "String",
+                      "DisplayText": "Description",
+                      "Description": "User to provide a text description of any deficiencies observed.",
+                      "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('deficiencyName')!='NONE_OBSERVED'}",
+                      "UITooltip": "Provide a short description of each deficiency observed.",
+                      "UIControl": "textarea"
+                    }
+                  ]
+                },
+                "cv_photos": {
+                  "photoType": {
+                    "Metadata": [
+                      {
+                        "Name": "photoType",
+                        "DataType": "Enumerated",
+                        "DisplayText": "Photo Type",
+                        "Description": "Photo Type",
+                        "Required": "True",
+                        "Enumeration": [
+                          {
+                            "Key": "FLOORING_INTERIOR_DEFICIENCY",
+                            "Value": "FLOORING_INTERIOR_DEFICIENCY"
+                          },
+                          {
+                            "Key": "PLUMBING_FIXTURES_INTERIOR_DEFICIENCY",
+                            "Value": "PLUMBING_FIXTURES_INTERIOR_DEFICIENCY"
+                          },
+                          {
+                            "Key": "ELECTRICAL_FIXTURES_INTERIOR_DEFICIENCY",
+                            "Value": "ELECTRICAL_FIXTURES_INTERIOR_DEFICIENCY"
+                          },
+                          {
+                            "Key": "CABINET_COUNTERTOPS_INTERIOR_DEFICIENCY",
+                            "Value": "CABINET_COUNTERTOPS_INTERIOR_DEFICIENCY"
+                          },
+                          {
+                            "Key": "APPLIANCES_INTERIOR_DEFICIENCY",
+                            "Value": "APPLIANCES_INTERIOR_DEFICIENCY"
+                          },
+                          {
+                            "Key": "WALLS_INTERIOR_DEFICIENCY",
+                            "Value": "WALLS_INTERIOR_DEFICIENCY"
+                          },
+                          {
+                            "Key": "CEILING_INTERIOR_DEFICIENCY",
+                            "Value": "CEILING_INTERIOR_DEFICIENCY"
+                          },
+                          {
+                            "Key": "OTHER_INTERIOR_DEFICIENCY",
+                            "Value": "OTHER_INTERIOR_DEFICIENCY"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "Metadata": [
+                    {
+                      "ConverType": "None",
+                      "MaxOccurs": "unbounded",
+                      "MinOccurs": "0",
+                      "Conditionally": "function execute(data,cx) {\r\n    var rtype = cx.FindValue(\"deficiencyName\");\r\n    var values = cx.FindChildValues(\"photoType\");\r\n    if (rtype!='NONE_OBSERVED' && values.length==0){\r\n        return { _output:true, _label: 'The photo(s) '+rtype+\"_INTERIOR_DEFICIENCY are required.\"};    \r\n    }\r\n    return false;\r\n}"
+                    }
+                  ]
+                },
+                "Metadata": [
+                  {
+                    "ConverType": "None",
+                    "MaxOccurs": "unbounded",
+                    "MinOccurs": "0",
+                    "Required": "True"
+                  }
+                ]
+              },
+              "plumbingFixtures": {
+                "fixtureType": {
+                  "Metadata": [
+                    {
+                      "Name": "fixturesType",
+                      "DataType": "Enumerated",
+                      "DisplayText": "Fixture Type",
+                      "Description": "User to select the best option to identify each plumbing or bathroom fixture found in each individual room.Note: The count and type of fixtures will determine the bathroom type programmatically. A full bathroom is identified by the presence of a shower/tub, sink, and toilet fixtures. A half-bath is identified by the presence of sink and toilet fixtures, with no shower/tub.",
+                      "Required": "True",
+                      "Enumeration": [
+                        {
+                          "Key": "SINK",
+                          "Value": "Sink"
+                        },
+                        {
+                          "Key": "DOUBLE_SINK",
+                          "Value": "Double Sink"
+                        },
+                        {
+                          "Key": "TOILET",
+                          "Value": "Toilet"
+                        },
+                        {
+                          "Key": "TUB_SHOWER",
+                          "Value": "Tub and Shower Combo"
+                        },
+                        {
+                          "Key": "WALK_IN_SHOWER",
+                          "Value": "Walk-in Shower"
+                        },
+                        {
+                          "Key": "TUB_W_NO_SHOWER",
+                          "Value": "Tub with No Shower"
+                        },
+                        {
+                          "Key": "FREESTANDING_TUB",
+                          "Value": "Freestanding Tub"
+                        },
+                        {
+                          "Key": "APPLIANCE_HOOKUP",
+                          "Value": "Appliance Hookup"
+                        },
+                        {
+                          "Key": "LAUNDRY_HOOKUP",
+                          "Value": "Laundry Hookup"
+                        },
+                        {
+                          "Key": "POT_FILLER",
+                          "Value": "Pot Filler"
+                        },
+                        {
+                          "Key": "JETTED_TUB",
+                          "Value": "Jetted Tub"
+                        },
+                        {
+                          "Key": "ROUGH_IN",
+                          "Value": "Rough In"
+                        },
+                        {
+                          "Key": "NONE_OBSERVED",
+                          "Value": "None Observed"
+                        }
+                      ],
+                      "UITooltip": "List all plumbing and bathroom fixtures in this room.",
+                      "HelpTextId": "7f37bf8d813a4cd0816ab2cf6ee9c4f3"
+                    }
+                  ]
+                },
+                "Metadata": [
+                  {
+                    "ConverType": "None",
+                    "MaxOccurs": "unbounded",
+                    "MinOccurs": "0",
+                    "Conditionally": "function execute(data,cx){return cx.IsEmpty() && ['BATHROOM','KITCHEN','BUTLERS_PANTRY','LAUNDRY_ROOM'].indexOf(cx.FindValue('roomType'))>=0;}"
+                  }
+                ]
+              },
+              "roomFeatures": {
+                "roomFeatureType": {
+                  "Metadata": [
+                    {
+                      "Name": "roomFeatureType",
+                      "DataType": "Enumerated",
+                      "DisplayText": "Feature",
+                      "Description": "User to select any room feature(s) from the list of values provided if any exists within the room.",
+                      "Required": "True",
+                      "Enumeration": [
+                        {
+                          "Key": "FIREPLACE",
+                          "Value": "Fireplace"
+                        },
+                        {
+                          "Key": "WOOD_STOVE",
+                          "Value": "Wood Stove"
+                        },
+                        {
+                          "Key": "BUILT_INS",
+                          "Value": "Built Ins"
+                        },
+                        {
+                          "Key": "WET_BAR",
+                          "Value": "Wet Bar"
+                        },
+                        {
+                          "Key": "WALK_IN_CLOSET",
+                          "Value": "Walk-in Closet"
+                        }
+                      ],
+                      "UITooltip": "Do any of the following features exist within the room?",
+                      "HelpTextId": "c26aa0dece204056a0bbc2080e76baf8"
+                    }
+                  ]
+                },
+                "Metadata": [
+                  {
+                    "ConverType": "None",
+                    "MaxOccurs": "unbounded",
+                    "MinOccurs": "0"
+                  }
+                ]
+              },
+              "cv_interiorFeaturesWalls": {
+                "Metadata": [
+                  {
+                    "Name": "cv_interiorFeaturesWalls",
+                    "DataType": "String",
+                    "DisplayText": "Walls",
+                    "Description": "Walls",
+                    "Required": "True",
+                    "UIControl": "textarea"
+                  }
+                ]
+              },
+              "cv_interiorFeaturesFloors": {
+                "Metadata": [
+                  {
+                    "Name": "cv_interiorFeaturesFloors",
+                    "DataType": "String",
+                    "DisplayText": "Floors",
+                    "Description": "Floors",
+                    "Required": "True",
+                    "UIControl": "textarea"
+                  }
+                ]
+              },
+              "cv_interiorFeatures": {
+                "cv_featureType": {
+                  "Metadata": [
+                    {
+                      "Name": "InteriorFeatureType",
+                      "DataType": "Enumerated",
+                      "DisplayText": "Interior Feature Type",
+                      "Description": "Interior Feature Type",
+                      "Enumeration": [
+                        {
+                          "Key": "TrimAndFinish",
+                          "Value": "Trim And Finish"
+                        },
+                        {
+                          "Key": "BathroomWainscot",
+                          "Value": "Bathroom Wainscot"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "cv_featureTypeDescription": {
+                  "Metadata": [
+                    {
+                      "Name": "InteriorFeatureTypeDescription",
+                      "DataType": "String",
+                      "DisplayText": "Description",
+                      "Description": "This field should contain a description of the materials and conditions.",
+                      "UITooltip": "Interior Feature Type Description",
+                      "UIControl": "textarea"
+                    }
+                  ]
+                },
+                "Metadata": [
+                  {
+                    "ConverType": "None",
+                    "MaxOccurs": "unbounded",
+                    "MinOccurs": "0"
+                  }
+                ]
+              },
+              "interiorUpdates": {
+                "interiorUpdatedComponent": {
+                  "Metadata": [
+                    {
+                      "Name": "interiorUpdatedComponent",
+                      "DataType": "Enumerated",
+                      "Required": "True",
+                      "DisplayText": "Update Component",
+                      "Description": "User to select any room components that have been replaced or refinished.",
+                      "Enumeration": [
+                        {
+                          "Key": "NONE_OBSERVED",
+                          "Value": "None Observed"
+                        },
+                        {
+                          "Key": "FLOORING",
+                          "Value": "Flooring"
+                        },
+                        {
+                          "Key": "PLUMBING_FIXTURES",
+                          "Value": "Plumbing Fixtures"
+                        },
+                        {
+                          "Key": "ELECTRICAL_FIXTURES",
+                          "Value": "Electrical Fixtures"
+                        },
+                        {
+                          "Key": "CABINET_COUNTERTOPS",
+                          "Value": "Cabinet Countertops"
+                        },
+                        {
+                          "Key": "APPLIANCES",
+                          "Value": "Appliances"
+                        },
+                        {
+                          "Key": "WALLS",
+                          "Value": "Walls"
+                        },
+                        {
+                          "Key": "CEILING",
+                          "Value": "Ceiling"
+                        },
+                        {
+                          "Key": "OTHER",
+                          "Value": "Other"
+                        }
+                      ],
+                      "UITooltip": "Select any applicable interior components from the list that have been replaced or refinished.",
+                      "HelpTextId": "e1bc4af784754be1b7eab1a0e065ab82"
+                    }
+                  ]
+                },
+                "interiorUpdateType": {
+                  "Metadata": [
+                    {
+                      "Name": "interiorUpdateType",
+                      "DataType": "Enumerated",
+                      "DisplayText": "Update Type",
+                      "Description": "User to select the manner in which the component was updated.Refinished = Changed the existing component, such as by painting or refacing.Example: Painting of walls, refinishing of cabinets.Replaced = Removed and replaced the existing component with new materials.",
+                      "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('interiorUpdatedComponent')!='NONE_OBSERVED';}",
+                      "Enumeration": [
+                        {
+                          "Key": "REPLACED",
+                          "Value": "Replaced"
+                        },
+                        {
+                          "Key": "REFINISHED",
+                          "Value": "Refinished"
+                        }
+                      ],
+                      "UITooltip": "Select the manner in which the component was updated.",
+                      "HelpTextId": "a9380a6c03604276ab8f538387454561"
+                    }
+                  ]
+                },
+                "interiorUpdateTimeframe": {
+                  "Metadata": [
+                    {
+                      "Name": "interiorUpdateTimeframe",
+                      "DataType": "Enumerated",
+                      "DisplayText": "How long ago was the update to the room completed?",
+                      "Description": "User to select the approximate timeframe in which the update was completed. For instance, if an update was made approximately 3 years ago, then the user would select 'TWO_TO_FIVE_YEARS'.",
+                      "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('interiorUpdatedComponent')!='NONE_OBSERVED';}",
+                      "Enumeration": [
+                        {
+                          "Key": "ZERO_TO_ONE_YEAR",
+                          "Value": "0 - 1 Year"
+                        },
+                        {
+                          "Key": "TWO_TO_FIVE_YEARS",
+                          "Value": "2 - 5 Years"
+                        },
+                        {
+                          "Key": "SIX_TO_TEN_YEARS",
+                          "Value": "6 - 10 Years"
+                        },
+                        {
+                          "Key": "ELEVEN_OR_MORE_YEARS",
+                          "Value": "11+ Years"
+                        }
+                      ],
+                      "UITooltip": "Select the approximate timeframe in which the update was completed",
+                      "HelpTextId": "08a2c36216484662984d98e8cf5635a6"
+                    }
+                  ]
+                },
+                "interiorUpdateDescription": {
+                  "Metadata": [
+                    {
+                      "Name": "interiorUpdateDescription",
+                      "DataType": "String",
+                      "DisplayText": "Description",
+                      "Description": "User to provide a free form text description of the interior update(s) identified within the room.",
+                      "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('interiorUpdatedComponent')!='NONE_OBSERVED';}",
+                      "UITooltip": "Provide a concise description of every interior update identified.",
+                      "UIControl": "textarea"
+                    }
+                  ]
+                },
+                "cv_photos": {
+                  "photoType": {
+                    "Metadata": [
+                      {
+                        "Name": "photoType",
+                        "DataType": "Enumerated",
+                        "DisplayText": "Photo Type",
+                        "Description": "Photo Type",
+                        "Required": "True",
+                        "Enumeration": [
+                          {
+                            "Key": "OTHER",
+                            "Value": "OTHER"
+                          },
+                          {
+                            "Key": "OTHER_INTERIOR_UPDATE",
+                            "Value": "OTHER_INTERIOR_UPDATE"
+                          },
+                          {
+                            "Key": "FLOORING_INTERIOR_UPDATE",
+                            "Value": "FLOORING_INTERIOR_UPDATE"
+                          },
+                          {
+                            "Key": "PLUMBING_FIXTURES_INTERIOR_UPDATE",
+                            "Value": "PLUMBING_FIXTURES_INTERIOR_UPDATE"
+                          },
+                          {
+                            "Key": "ELECTRICAL_FIXTURES_INTERIOR_UPDATE",
+                            "Value": "ELECTRICAL_FIXTURES_INTERIOR_UPDATE"
+                          },
+                          {
+                            "Key": "CABINET_COUNTERTOPS_INTERIOR_UPDATE",
+                            "Value": "CABINET_COUNTERTOPS_INTERIOR_UPDATE"
+                          },
+                          {
+                            "Key": "APPLIANCES_INTERIOR_UPDATE",
+                            "Value": "APPLIANCES_INTERIOR_UPDATE"
+                          },
+                          {
+                            "Key": "WALLS_INTERIOR_UPDATE",
+                            "Value": "WALLS_INTERIOR_UPDATE"
+                          },
+                          {
+                            "Key": "CEILING_INTERIOR_UPDATE",
+                            "Value": "CEILING_INTERIOR_UPDATE"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "Metadata": [
+                    {
+                      "ConverType": "None",
+                      "MaxOccurs": "unbounded",
+                      "MinOccurs": "0",
+                      "RequiredMessage": "At least one interiorUpdate photo is required.",
+                      "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('interiorUpdatedComponent')!='NONE_OBSERVED';}"
+                    }
+                  ]
+                },
+                "Metadata": [
+                  {
+                    "ConverType": "None",
+                    "MaxOccurs": "unbounded",
+                    "MinOccurs": "0",
+                    "Required": "True"
+                  }
+                ]
+              },
+              "cv_kitchenEquipment": {
+                "cv_equipmentType": {
+                  "Metadata": [
+                    {
+                      "Name": "KitchenEquipmentType",
+                      "DataType": "Enumerated",
+                      "DisplayText": "Kitchen Equipment Type",
+                      "Description": "Kitchen Equipment Type",
+                      "Required": "True",
+                      "Enumeration": [
+                        {
+                          "Key": "Refrigerator",
+                          "Value": "Refrigerator"
+                        },
+                        {
+                          "Key": "RangeOven",
+                          "Value": "RangeOven"
+                        },
+                        {
+                          "Key": "Dishwasher",
+                          "Value": "Dishwasher"
+                        },
+                        {
+                          "Key": "Disposal",
+                          "Value": "Disposal"
+                        },
+                        {
+                          "Key": "Microwave",
+                          "Value": "Microwave"
+                        },
+                        {
+                          "Key": "WasherDryer",
+                          "Value": "WasherDryer"
+                        },
+                        {
+                          "Key": "Other",
+                          "Value": "Other"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "cv_equipmentDescription": {
+                  "Metadata": [
+                    {
+                      "Name": "KitchenEquipmentDescription",
+                      "DataType": "String",
+                      "DisplayText": "Kitchen Equipment Description",
+                      "Description": "Kitchen Equipment Description",
+                      "Required": "True",
+                      "UIControl": "textarea"
+                    }
+                  ]
+                },
+                "Metadata": [
+                  {
+                    "ConverType": "None",
+                    "MaxOccurs": "unbounded",
+                    "MinOccurs": "0"
+                  }
+                ]
+              },
+              "cv_photos": {
+                "photoType": {
+                  "Metadata": [
+                    {
+                      "Name": "photoType",
+                      "DataType": "Enumerated",
+                      "DisplayText": "Photo Type",
+                      "Description": "Photo Type",
+                      "Required": "True",
+                      "Enumeration": [
+                        {
+                          "Key": "ROOM",
+                          "Value": "ROOM"
+                        },
+                        {
+                          "Key": "OTHER",
+                          "Value": "OTHER"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "Metadata": [
+                  {
+                    "ConverType": "None",
+                    "MaxOccurs": "unbounded",
+                    "MinOccurs": "0",
+                    "RequiredMessage": "At least one Room photo is required.",
+                    "Conditionally": "function execute(data,cx){\r\n    if (cx.IsEmpty())\r\n    {\r\n        return true;\r\n    }    \r\n    var photoTypes = cx.FindChildValues('photoType');\r\n    return (photoTypes.indexOf('ROOM')==-1);\r\n}"
+                  }
+                ]
+              },
+              "Metadata": [
+                {
+                  "ConverType": "None",
+                  "MaxOccurs": "unbounded",
+                  "MinOccurs": "0",
+                  "Required": "True"
+                }
+              ]
+            },
+            "totalArea": {
+              "Metadata": [
+                {
+                  "Name": "totalArea",
+                  "DataType": "Integer",
+                  "DisplayText": "Total Area",
+                  "Description": "User to input the total floor area for each level. Total floor area includes all finished and unfinished regardless of ceiling height. This field is not used in calculating GLA.\n",
+                  "Required": "True",
+                  "UITooltip": "What is the total area of this level, finished and unfinished?",
+                  "HelpTextId": "e8f1fb13619d4f3cbb6b64db1ef14312"
+                }
+              ]
+            },
+            "finishedLivingArea": {
+              "Metadata": [
+                {
+                  "Name": "finishedLivingArea",
+                  "DataType": "Integer",
+                  "DisplayText": "Finished Living Area",
+                  "Description": "User to input the finished living area for each level. Finished living area is area where the ceiling height is greater than or equal to 7 feet. Areas that are unfinished or areas where the ceiling height is less than 7 feet are not to be included. This field is used to calculate GLA.",
+                  "Conditionally": "function execute(data,cx){ \r\n    if (cx.IsEmpty()){\r\n        return true;\r\n    } else {\r\n      var finishedLivingArea = cx.GetValue();\r\n      var totalArea = cx.FindValue('totalArea');\r\n      if (finishedLivingArea > totalArea){\r\n        return { _output:true, _label:\"finishedLivingArea can't be more than totalArea\" }\r\n      }\r\n      return false;\r\n    }\r\n }",
+                  "UITooltip": "What is the finished living area of this level?",
+                  "HelpTextId": "17a9b763521949a48ab61ad75b762616"
+                }
+              ]
+            },
+            "earthContact": {
+              "Metadata": [
+                {
+                  "Name": "earthContact",
+                  "DataType": "Boolean",
+                  "DisplayText": "Does the majority of any exterior wall of this level have earth contact?",
+                  "Description": "User to identify below grade areas by indicating whether the majority of at least one wall of the level has earth contact. For levels identified by the user as having earth contact, the value for this Boolean should be TRUE.",
+                  "Required": "True",
+                  "UITooltip": "For each level identify if it has Earth Contact."
+                }
+              ]
+            },
+            "levelNumber": {
+              "Metadata": [
+                {
+                  "Name": "levelNumber",
+                  "DataType": "Integer",
+                  "DisplayText": "Level Number",
+                  "Description": "User to enter a number for each level in sequential order starting at the bottom, regardless of whether a level has earth contact.",
+                  "Conditionally": "function execute(data,cx){ \r\n    if (cx.IsEmpty()){\r\n        return true;\r\n    } else {\r\n      var levelsNumbers = cx.FindSiblingValues('levelNumber') || [];\r\n      var currentLevelNumber = cx.GetValue();\r\n      if (levelsNumbers.filter(function(levelNumber) { return levelNumber === currentLevelNumber; }).length > 1){\r\n        return { _output:true, _label:\"levelNumber should be unique\" }\r\n      }\r\n      return false;\r\n    }\r\n }",
+                  "UITooltip": "Identify the level number starting with the lowest number on the bottom floor and highest number on the top floor.",
+                  "HelpTextId": "848af7e3e4e0450daea579416f88f15c"
+                }
+              ]
+            },
+            "levelLowCeiling": {
+              "Metadata": [
+                {
+                  "Name": "levelLowCeiling",
+                  "DataType": "Boolean",
+                  "DisplayText": "Does any finished area on this level have ceilings lower than 7 feet?",
+                  "Description": "User to indicate whether any portion of the level has ceilings less than 7 feet above the floor.",
+                  "Required": "True",
+                  "UITooltip": "Is there any finished area on this level with ceilings lower than 7 feet?"
+                }
+              ]
+            },
+            "attic": {
+              "Metadata": [
+                {
+                  "Name": "attic",
+                  "DataType": "Boolean",
+                  "DisplayText": "Can an attic can be accessed from this level?",
+                  "Required": "True",
+                  "Description": "User to indicate whether an attic is accessible from the level. True = Attic can be accessed from this level. False = Attic cannot be accessed from this level.",
+                  "UITooltip": "Indicate whether an attic is accessible from this level. If the attic is on the same level or directly above the level, select YES."
+                }
+              ]
+            },
+            "atticAccess": {
+              "Metadata": [
+                {
+                  "Name": "atticAccess",
+                  "DataType": "Enumerated",
+                  "DisplayText": "How is the attic accessed?",
+                  "Description": "User to select the option that best describes the type of access to the attic when the attic indicator is set to 'TRUE'.",
+                  "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('attic')==true}",
+                  "Enumeration": [
+                    {
+                      "Key": "ATTIC_SCUTTLE",
+                      "Value": "Attic Scuttle"
+                    },
+                    {
+                      "Key": "DROP_STAIR",
+                      "Value": "Drop Stair"
+                    },
+                    {
+                      "Key": "PERMANENT_STAIRWELL",
+                      "Value": "Permanent Stairwell"
+                    },
+                    {
+                      "Key": "NONE_OBSERVED",
+                      "Value": "None Observed"
+                    }
+                  ],
+                  "UITooltip": "If an attic is indicated for the level, select the item that best describes the type of access to the attic."
+                }
+              ]
+            },
+            "belowGradeExits": {
+              "Metadata": [
+                {
+                  "Name": "belowGradeExits",
+                  "DataType": "Enumerated",
+                  "DisplayText": "How is this below-grade level accessed?",
+                  "Description": "User to indicate the type(s) of access to below grade areas (indicated by the selection of 'Earth Contact'). The user should select the type(s) of access for either external access and/or internal access.",
+                  "Conditionally": "function execute(data,cx){ return cx.IsEmpty() && cx.FindValue('earthContact')==true; }",
+                  "MaxOccurs": "unbounded",
+                  "MinOccurs": "0",
+                  "Enumeration": [
+                    {
+                      "Key": "INTERIOR",
+                      "Value": "Interior"
+                    },
+                    {
+                      "Key": "WALKUP",
+                      "Value": "Walk-up"
+                    },
+                    {
+                      "Key": "WALKOUT",
+                      "Value": "Walkout"
+                    },
+                    {
+                      "Key": "GARAGE",
+                      "Value": "Garage"
+                    },
+                    {
+                      "Key": "BULKHEAD",
+                      "Value": "Bulkhead"
+                    },
+                    {
+                      "Key": "NONE",
+                      "Value": "NONE"
+                    }
+                  ],
+                  "UITooltip": "If the level has been indicated as having Earth Contact, provide all exit types from that level."
+                }
+              ]
+            },
+            "Metadata": [
+              {
+                "ConverType": "None",
+                "MaxOccurs": "unbounded",
+                "MinOccurs": "0",
+                "Required": "True"
+              }
+            ]
+          },
+          "Metadata": [
+            {
+              "ConverType": "None",
+              "MaxOccurs": "unbounded",
+              "MinOccurs": "0",
+              "Required": "True"
+            }
+          ]
+        },
+        "yearBuilt": {
+          "Metadata": [
+            {
+              "Name": "yearBuilt",
+              "DataType": "Integer",
+              "DisplayText": "Year Built",
+              "Description": "Best practice is to furnish the year built of each structure from a reliable data source, as available. The Property Data Collector should confirm the provided year built with the property POC. The application should allow the user to enter the year built if it is either unavailable or incorrect, according to the POC.",
+              "UITooltip": "What year was the structure originally constructed?",
+              "Conditionally": "function execute(data,cx){ \r\n    if (cx.IsEmpty()){\r\n        return true;\r\n    } else {\r\n      var value = cx.GetValue();\r\n      var currentYear = new Date().getFullYear();\r\n      if (value > 1600 && value <= currentYear){\r\n        return false\r\n      }\r\n      return  { _output:true, _label:'must be a valid year greater than 1600 and less or equal to current year' };\r\n    }\r\n }",
+              "HelpTextId": "9e6922fb75344174ab60574a572af8a1"
+            }
+          ]
+        },
+        "yearBuiltEstimate": {
+          "Metadata": [
+            {
+              "Name": "yearBuiltEstimate",
+              "DataType": "Boolean",
+              "DisplayText": "Is the provided 'Year Built' an estimate?",
+              "Description": "User to indicate whether the year built value provided is an estimate, TRUE indicates it is an estimate and FALSE indicates it is not an estimate.",
+              "Required": "True",
+              "UITooltip": "Is the year provided for when the structure was originally constructed an estimate?"
+            }
+          ]
+        },
+        "exteriorDeficiencies": {
+          "deficiencyName": {
+            "Metadata": [
+              {
+                "Name": "deficiencyName",
+                "DataType": "Enumerated",
+                "DisplayText": "Deficiency Name",
+                "Description": "User to identify any exterior components that are either damaged or show obvious signs of wear and tear.",
+                "Required": "True",
+                "Enumeration": [
+                  {
+                    "Key": "WINDOWS",
+                    "Value": "Windows"
+                  },
+                  {
+                    "Key": "FOUNDATION",
+                    "Value": "Foundation"
+                  },
+                  {
+                    "Key": "ROOF",
+                    "Value": "Roof"
+                  },
+                  {
+                    "Key": "SIDING",
+                    "Value": "Siding"
+                  },
+                  {
+                    "Key": "FASCIA",
+                    "Value": "Fascia"
+                  },
+                  {
+                    "Key": "DOORS",
+                    "Value": "Doors"
+                  },
+                  {
+                    "Key": "GUTTERS_DOWNSPOUTS",
+                    "Value": "Gutters/Downspouts"
+                  },
+                  {
+                    "Key": "EAVES",
+                    "Value": "Eaves"
+                  },
+                  {
+                    "Key": "CHIMNEY",
+                    "Value": "Chimney"
+                  },
+                  {
+                    "Key": "PORCH",
+                    "Value": "Porch"
+                  },
+                  {
+                    "Key": "PATIO",
+                    "Value": "Patio"
+                  },
+                  {
+                    "Key": "DECK",
+                    "Value": "Deck"
+                  },
+                  {
+                    "Key": "BALCONY",
+                    "Value": "Balcony"
+                  },
+                  {
+                    "Key": "ENTRY_STAIRS",
+                    "Value": "Entry Stairs"
+                  },
+                  {
+                    "Key": "OTHER",
+                    "Value": "Other"
+                  },
+                  {
+                    "Key": "NONE_OBSERVED",
+                    "Value": "None Observed"
+                  }
+                ],
+                "UITooltip": "Are there exterior components with obvious damage or wear and tear that need to be addressed?",
+                "HelpTextId": "e5c8d4080cf2431d805aa22ed516e9ac"
+              }
+            ]
+          },
+          "deficiencyType": {
+            "Metadata": [
+              {
+                "Name": "deficiencyType",
+                "DataType": "Enumerated",
+                "DisplayText": "Deficiency Type",
+                "Description": "User to identify the type of deficiency of the component selected.",
+                "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('deficiencyName')!='NONE_OBSERVED'}",
+                "Enumeration": [
+                  {
+                    "Key": "EXCESSIVE_WEAR",
+                    "Value": "Excessive Wear and Tear"
+                  },
+                  {
+                    "Key": "DAMAGE",
+                    "Value": "Damaged"
+                  },
+                  {
+                    "Key": "EVIDENCE_OF_INFESTATION",
+                    "Value": "Infestation Evident"
+                  },
+                  {
+                    "Key": "MISSING",
+                    "Value": "Missing"
+                  },
+                  {
+                    "Key": "OTHER",
+                    "Value": "Other"
+                  }
+                ],
+                "UITooltip": "What type of damage or wear and tear did you observe?",
+                "HelpTextId": "2ad9f5a76d3d4478b6c34c34cbbed10a"
+              }
+            ]
+          },
+          "exteriorDeficiencySeverity": {
+            "Metadata": [
+              {
+                "Name": "exteriorDeficiencySeverity",
+                "DataType": "Boolean",
+                "DisplayText": "Is Habitability affected?",
+                "Description": "User to select whether the deficient item does (TRUE) or does not (FALSE) impact the safety, structural integrity, or habitability of the affected structural component.",
+                "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('deficiencyName')!='NONE_OBSERVED'}",
+                "UITooltip": "Does the deficiency impact the safety, structural integrity, or habitability of the structure?",
+                "HelpTextId": "d7e4d3ed999e4a4cbc2484bd1687758d"
+              }
+            ]
+          },
+          "descriptionExteriorDeficiency": {
+            "Metadata": [
+              {
+                "Name": "descriptionExteriorDeficiency",
+                "DataType": "String",
+                "DisplayText": "Description",
+                "Description": "User to provide a text description of any deficiencies observed.",
+                "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('deficiencyName')!='NONE_OBSERVED'}",
+                "UITooltip": "Provide a description of each exterior component deficiency observed.",
+                "UIControl": "textarea"
+              }
+            ]
+          },
+          "cv_photos": {
+            "photoType": {
+              "Metadata": [
+                {
+                  "Name": "photoType",
+                  "DataType": "Enumerated",
+                  "DisplayText": "Photo Type",
+                  "Description": "Photo Type",
+                  "Required": "True",
+                  "Enumeration": [
+                    {
+                      "Key": "FOUNDATION_EXTERIOR_DEFICIENCY",
+                      "Value": "FOUNDATION_EXTERIOR_DEFICIENCY"
+                    },
+                    {
+                      "Key": "ROOF_EXTERIOR_DEFICIENCY",
+                      "Value": "ROOF_EXTERIOR_DEFICIENCY"
+                    },
+                    {
+                      "Key": "SIDING_EXTERIOR_DEFICIENCY",
+                      "Value": "SIDING_EXTERIOR_DEFICIENCY"
+                    },
+                    {
+                      "Key": "FASCIA_EXTERIOR_DEFICIENCY",
+                      "Value": "FASCIA_EXTERIOR_DEFICIENCY"
+                    },
+                    {
+                      "Key": "WINDOWS_EXTERIOR_DEFICIENCY",
+                      "Value": "WINDOWS_EXTERIOR_DEFICIENCY"
+                    },
+                    {
+                      "Key": "DOORS_EXTERIOR_DEFICIENCY",
+                      "Value": "DOORS_EXTERIOR_DEFICIENCY"
+                    },
+                    {
+                      "Key": "GUTTERS_DOWNSPOUTS_EXTERIOR_DEFICIENCY",
+                      "Value": "GUTTERS_DOWNSPOUTS_EXTERIOR_DEFICIENCY"
+                    },
+                    {
+                      "Key": "EAVES_EXTERIOR_DEFICIENCY",
+                      "Value": "EAVES_EXTERIOR_DEFICIENCY"
+                    },
+                    {
+                      "Key": "CHIMNEY_EXTERIOR_DEFICIENCY",
+                      "Value": "CHIMNEY_EXTERIOR_DEFICIENCY"
+                    },
+                    {
+                      "Key": "PORCH_EXTERIOR_DEFICIENCY",
+                      "Value": "PORCH_EXTERIOR_DEFICIENCY"
+                    },
+                    {
+                      "Key": "PATIO_EXTERIOR_DEFICIENCY",
+                      "Value": "PATIO_EXTERIOR_DEFICIENCY"
+                    },
+                    {
+                      "Key": "DECK_EXTERIOR_DEFICIENCY",
+                      "Value": "DECK_EXTERIOR_DEFICIENCY"
+                    },
+                    {
+                      "Key": "BALCONY_EXTERIOR_DEFICIENCY",
+                      "Value": "BALCONY_EXTERIOR_DEFICIENCY"
+                    },
+                    {
+                      "Key": "ENTRY_STAIRS_EXTERIOR_DEFICIENCY",
+                      "Value": "ENTRY_STAIRS_EXTERIOR_DEFICIENCY"
+                    },
+                    {
+                      "Key": "OTHER_EXTERIOR_DEFICIENCY",
+                      "Value": "OTHER_EXTERIOR_DEFICIENCY"
+                    }
+                  ]
+                }
+              ]
+            },
+            "Metadata": [
+              {
+                "ConverType": "None",
+                "MaxOccurs": "unbounded",
+                "MinOccurs": "0",
+                "Conditionally": "function execute(data,cx) {\r\n    var rtype = cx.FindValue(\"deficiencyName\");\r\n    var values = cx.FindChildValues(\"photoType\");\r\n    if (rtype!='NONE_OBSERVED' && values.length==0){\r\n        return { _output:true, _label: rtype+\"_EXTERIOR_DEFICIENCY is required \"};    \r\n    }\r\n    return false;\r\n}"
+              }
+            ]
+          },
+          "Metadata": [
+            {
+              "ConverType": "None",
+              "MaxOccurs": "unbounded",
+              "MinOccurs": "0",
+              "Required": "True"
+            }
+          ]
+        },
+        "mechanicalDeficiencies": {
+          "deficiencyName": {
+            "Metadata": [
+              {
+                "Name": "deficiencyName",
+                "DataType": "Enumerated",
+                "DisplayText": "Deficiency Name",
+                "Description": "User to identify any mechanical components or systems that are either damaged or show obvious signs of wear and tear.",
+                "Required": "True",
+                "Enumeration": [
+                  {
+                    "Key": "NONE_OBSERVED",
+                    "Value": "None Observed"
+                  },
+                  {
+                    "Key": "PLUMBING",
+                    "Value": "Plumbing"
+                  },
+                  {
+                    "Key": "ELECTRICAL",
+                    "Value": "Electrical"
+                  },
+                  {
+                    "Key": "HEATING",
+                    "Value": "Heating"
+                  },
+                  {
+                    "Key": "WATER_HEATER",
+                    "Value": "Water Heater"
+                  },
+                  {
+                    "Key": "COOLING",
+                    "Value": "Cooling"
+                  },
+                  {
+                    "Key": "SUMP_PUMP",
+                    "Value": "Sump Pump"
+                  },
+                  {
+                    "Key": "OTHER",
+                    "Value": "Other"
+                  }
+                ],
+                "UITooltip": "Are there mechanical components or systems with obvious damage or wear and tear that need to be addressed?",
+                "HelpTextId": "d25f8acc5de44ff0bc929de17d487245"
+              }
+            ]
+          },
+          "deficiencyType": {
+            "Metadata": [
+              {
+                "Name": "deficiencyType",
+                "DataType": "Enumerated",
+                "DisplayText": "Deficiency Type",
+                "Description": "User to identify the type of deficiency of the component selected.",
+                "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('deficiencyName')!='NONE_OBSERVED'}",
+                "Enumeration": [
+                  {
+                    "Key": "EXCESSIVE_WEAR",
+                    "Value": "Excessive Wear and Tear"
+                  },
+                  {
+                    "Key": "DAMAGE",
+                    "Value": "Damaged"
+                  },
+                  {
+                    "Key": "MISSING",
+                    "Value": "Missing"
+                  },
+                  {
+                    "Key": "NON_FUNCTIONAL",
+                    "Value": "Non-Functional"
+                  },
+                  {
+                    "Key": "EVIDENCE_OF_LEAKS",
+                    "Value": "Leaks Evident"
+                  },
+                  {
+                    "Key": "EVIDENCE_OF_FIRE",
+                    "Value": "Fire Evident"
+                  },
+                  {
+                    "Key": "OTHER",
+                    "Value": "Other"
+                  }
+                ],
+                "UITooltip": "What type of damage or wear and tear did you observe?",
+                "HelpTextId": "6ab8518c7c944f109dd1b72a3c907cb4"
+              }
+            ]
+          },
+          "mechanicalDeficiencySeverity": {
+            "Metadata": [
+              {
+                "Name": "mechanicalDeficiencySeverity",
+                "DataType": "Boolean",
+                "DisplayText": "Is Habitability affected?",
+                "Description": "User to select whether the deficient item does (TRUE) or does not (FALSE) impact the safety, structural integrity, or habitability of the affected mechanical component.",
+                "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('deficiencyName')!='NONE_OBSERVED'}",
+                "UITooltip": "Does the deficiency impact the safety, structural integrity, or habitability of the structure or unit?",
+                "HelpTextId": "b70332ea94c64696b1a57faf634b83a5"
+              }
+            ]
+          },
+          "descriptionMechanicalDeficiency": {
+            "Metadata": [
+              {
+                "Name": "descriptionMechanicalDeficiency",
+                "DataType": "String",
+                "DisplayText": "Description",
+                "Description": "User to provide a text description of any deficiencies observed.",
+                "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('deficiencyName')!='NONE_OBSERVED'}",
+                "UITooltip": "Provide a description of each mechanical component deficiency observed.",
+                "UIControl": "textarea"
+              }
+            ]
+          },
+          "cv_photos": {
+            "photoType": {
+              "Metadata": [
+                {
+                  "Name": "photoType",
+                  "DataType": "Enumerated",
+                  "DisplayText": "Photo Type",
+                  "Description": "Photo Type",
+                  "Required": "True",
+                  "Enumeration": [
+                    {
+                      "Key": "PLUMBING_MECHANICAL_DEFICIENCY",
+                      "Value": "PLUMBING_MECHANICAL_DEFICIENCY"
+                    },
+                    {
+                      "Key": "ELECTRICAL_MECHANICAL_DEFICIENCY",
+                      "Value": "ELECTRICAL_MECHANICAL_DEFICIENCY"
+                    },
+                    {
+                      "Key": "HEATING_MECHANICAL_DEFICIENCY",
+                      "Value": "HEATING_MECHANICAL_DEFICIENCY"
+                    },
+                    {
+                      "Key": "WATER_HEATER_MECHANICAL_DEFICIENCY",
+                      "Value": "WATER_HEATER_MECHANICAL_DEFICIENCY"
+                    },
+                    {
+                      "Key": "COOLING_MECHANICAL_DEFICIENCY",
+                      "Value": "COOLING_MECHANICAL_DEFICIENCY"
+                    },
+                    {
+                      "Key": "SUMP_PUMP_MECHANICAL_DEFICIENCY",
+                      "Value": "SUMP_PUMP_MECHANICAL_DEFICIENCY"
+                    },
+                    {
+                      "Key": "OTHER_MECHANICAL_DEFICIENCY",
+                      "Value": "OTHER_MECHANICAL_DEFICIENCY"
+                    }
+                  ]
+                }
+              ]
+            },
+            "Metadata": [
+              {
+                "ConverType": "None",
+                "MaxOccurs": "unbounded",
+                "MinOccurs": "0",
+                "Conditionally": "function execute(data,cx) {\r\n    var rtype = cx.FindValue(\"deficiencyName\");\r\n    var values = cx.FindChildValues(\"photoType\");\r\n    if (rtype!='NONE_OBSERVED' && values.length==0){\r\n        return { _output:true, _label: rtype+\"_MECHANICAL_DEFICIENCY is required \"};    \r\n    }\r\n    return false;\r\n}"
+              }
+            ]
+          },
+          "Metadata": [
+            {
+              "ConverType": "None",
+              "MaxOccurs": "unbounded",
+              "MinOccurs": "0",
+              "Required": "True"
+            }
+          ]
+        },
+        "exteriorUpdates": {
+          "exteriorUpdatedComponent": {
+            "Metadata": [
+              {
+                "Name": "exteriorUpdatedComponent",
+                "DataType": "Enumerated",
+                "Required": "True",
+                "DisplayText": "Exterior Update Component",
+                "Description": "User to select any exterior components of the structure that have been replaced or refinished from their original state.",
+                "Enumeration": [
+                  {
+                    "Key": "NONE_OBSERVED",
+                    "Value": "None Observed"
+                  },
+                  {
+                    "Key": "SIDING",
+                    "Value": "Siding"
+                  },
+                  {
+                    "Key": "WINDOWS",
+                    "Value": "Windows"
+                  },
+                  {
+                    "Key": "DOORS",
+                    "Value": "Doors"
+                  },
+                  {
+                    "Key": "WALLS",
+                    "Value": "Walls"
+                  },
+                  {
+                    "Key": "CEILING",
+                    "Value": "Ceiling"
+                  },
+                  {
+                    "Key": "ROOF",
+                    "Value": "Roof"
+                  },
+                  {
+                    "Key": "FOUNDATION",
+                    "Value": "Foundation"
+                  },
+                  {
+                    "Key": "OTHER",
+                    "Value": "Other"
+                  }
+                ],
+                "UITooltip": "Select any applicable exterior components that have been replaced or refinished.",
+                "HelpTextId": "370c8cca05e54b6c9dfd68f6ac3a224e"
+              }
+            ]
+          },
+          "exteriorUpdateType": {
+            "Metadata": [
+              {
+                "Name": "exteriorUpdateType",
+                "DataType": "Enumerated",
+                "DisplayText": "Update Type",
+                "Description": "User to select the manner in which the component was updated. Refinished = Changed the existing component, such as by painting or refacing. Replaced = Removed and replaced the existing component with new materials.",
+                "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('exteriorUpdatedComponent')!='NONE_OBSERVED';}",
+                "Enumeration": [
+                  {
+                    "Key": "REPLACED",
+                    "Value": "Replaced"
+                  },
+                  {
+                    "Key": "REFINISHED",
+                    "Value": "Refinished"
+                  }
+                ],
+                "UITooltip": "Select the manner in which the exterior component was updated.",
+                "HelpTextId": "2e2655faaa314d0fbba343734a30d4a5"
+              }
+            ]
+          },
+          "exteriorUpdateTimeframe": {
+            "Metadata": [
+              {
+                "Name": "exteriorUpdateTimeframe",
+                "DataType": "Enumerated",
+                "DisplayText": "How long ago was the update completed?",
+                "Description": "User to select the approximate timeframe in which the update was completed. For instance, if an update was made approximately 3 years ago, then the user would select 'TWO_TO_FIVE_YEARS'. ",
+                "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('exteriorUpdatedComponent')!='NONE_OBSERVED';}",
+                "Enumeration": [
+                  {
+                    "Key": "ZERO_TO_ONE_YEAR",
+                    "Value": "0 - 1 Year"
+                  },
+                  {
+                    "Key": "TWO_TO_FIVE_YEARS",
+                    "Value": "2 - 5 Years"
+                  },
+                  {
+                    "Key": "SIX_TO_TEN_YEARS",
+                    "Value": "6 - 10 Years"
+                  },
+                  {
+                    "Key": "ELEVEN_OR_MORE_YEARS",
+                    "Value": "11+ Years"
+                  }
+                ],
+                "UITooltip": "Indicate the approximate timeframe in which the update was completed.",
+                "HelpTextId": "4528f8aeb71844dea3b009da297af869"
+              }
+            ]
+          },
+          "exteriorUpdateDescription": {
+            "Metadata": [
+              {
+                "Name": "exteriorUpdateDescription",
+                "DataType": "String",
+                "DisplayText": "Description",
+                "Description": "User to provide a free form text description of the interior update(s) identified within the room.",
+                "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('exteriorUpdatedComponent')!='NONE_OBSERVED';}",
+                "UITooltip": "If there have been updates to the exterior of the structure describe the nature of the improvements.",
+                "UIControl": "textarea"
+              }
+            ]
+          },
+          "cv_photos": {
+            "photoType": {
+              "Metadata": [
+                {
+                  "Name": "photoType",
+                  "DataType": "Enumerated",
+                  "DisplayText": "Photo Type",
+                  "Description": "Photo Type",
+                  "Required": "True",
+                  "Enumeration": [
+                    {
+                      "Key": "OTHER",
+                      "Value": "OTHER"
+                    },
+                    {
+                      "Key": "SIDING_EXTERIOR_UPDATE",
+                      "Value": "SIDING_EXTERIOR_UPDATE"
+                    },
+                    {
+                      "Key": "WINDOWS_EXTERIOR_UPDATE",
+                      "Value": "WINDOWS_EXTERIOR_UPDATE"
+                    },
+                    {
+                      "Key": "DOORS_EXTERIOR_UPDATE",
+                      "Value": "DOORS_EXTERIOR_UPDATE"
+                    },
+                    {
+                      "Key": "WALLS_EXTERIOR_UPDATE",
+                      "Value": "WALLS_EXTERIOR_UPDATE"
+                    },
+                    {
+                      "Key": "CEILING_EXTERIOR_UPDATE",
+                      "Value": "CEILING_EXTERIOR_UPDATE"
+                    },
+                    {
+                      "Key": "ROOF_EXTERIOR_UPDATE",
+                      "Value": "ROOF_EXTERIOR_UPDATE"
+                    },
+                    {
+                      "Key": "FOUNDATION_EXTERIOR_UPDATE",
+                      "Value": "FOUNDATION_EXTERIOR_UPDATE"
+                    },
+                    {
+                      "Key": "OTHER_EXTERIOR_UPDATE",
+                      "Value": "OTHER_EXTERIOR_UPDATE"
+                    }
+                  ]
+                }
+              ]
+            },
+            "Metadata": [
+              {
+                "ConverType": "None",
+                "MaxOccurs": "unbounded",
+                "MinOccurs": "0",
+                "RequiredMessage": "At least one exteriorUpdate photo is required.",
+                "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('exteriorUpdatedComponent')!='NONE_OBSERVED';}"
+              }
+            ]
+          },
+          "Metadata": [
+            {
+              "ConverType": "None",
+              "MaxOccurs": "unbounded",
+              "MinOccurs": "0",
+              "Required": "True"
+            }
+          ]
+        },
+        "exteriorFeatures": {
+          "exteriorFeatureType": {
+            "Metadata": [
+              {
+                "Name": "exteriorFeatureType",
+                "DataType": "Enumerated",
+                "DisplayText": "Feature",
+                "Description": "User to indicate whether any exterior features exist on or have attachment to the structure and select all applicable items from the list. If none of the exterior features from the list are identified on the structure, then the user should select 'None'. Items that are not directly attached to the structure must exist in close proximity to the structure or on an item that is attached to the structure.",
+                "Required": "True",
+                "Enumeration": [
+                  {
+                    "Key": "NONE",
+                    "Value": "None"
+                  },
+                  {
+                    "Key": "DECK",
+                    "Value": "Deck"
+                  },
+                  {
+                    "Key": "PATIO",
+                    "Value": "Patio"
+                  },
+                  {
+                    "Key": "BALCONY",
+                    "Value": "Balcony"
+                  },
+                  {
+                    "Key": "UNCOVERED_PORCH",
+                    "Value": "Uncovered Porch"
+                  },
+                  {
+                    "Key": "COVERED_PORCH",
+                    "Value": "Covered Porch"
+                  },
+                  {
+                    "Key": "ENCLOSED_PORCH",
+                    "Value": "Enclosed Porch"
+                  },
+                  {
+                    "Key": "WRAP_AROUND_PORCH",
+                    "Value": "Wrap-around Porch"
+                  },
+                  {
+                    "Key": "STOOP",
+                    "Value": "Stoop"
+                  },
+                  {
+                    "Key": "OUTDOOR_KITCHEN",
+                    "Value": "Outdoor Kitchen"
+                  },
+                  {
+                    "Key": "FIREPIT",
+                    "Value": "Firepit"
+                  },
+                  {
+                    "Key": "FIREPLACE",
+                    "Value": "Fireplace"
+                  }
+                ],
+                "UITooltip": "Do any of the following exterior features exist on or have attachment to the structure?",
+                "HelpTextId": "0264706117954a679cb302cbe02b35bc"
+              }
+            ]
+          },
+          "cv_photos": {
+            "photoType": {
+              "Metadata": [
+                {
+                  "Name": "photoType",
+                  "DataType": "Enumerated",
+                  "DisplayText": "Photo Type",
+                  "Description": "Photo Type",
+                  "Required": "True",
+                  "Enumeration": [
+                    {
+                      "Key": "DECK_EXTERIOR_FEATURE",
+                      "Value": "DECK_EXTERIOR_FEATURE"
+                    },
+                    {
+                      "Key": "PATIO_EXTERIOR_FEATURE",
+                      "Value": "PATIO_EXTERIOR_FEATURE"
+                    },
+                    {
+                      "Key": "BALCONY_EXTERIOR_FEATURE",
+                      "Value": "BALCONY_EXTERIOR_FEATURE"
+                    },
+                    {
+                      "Key": "UNCOVERED_PORCH_EXTERIOR_FEATURE",
+                      "Value": "UNCOVERED_PORCH_EXTERIOR_FEATURE"
+                    },
+                    {
+                      "Key": "COVERED_PORCH_EXTERIOR_FEATURE",
+                      "Value": "COVERED_PORCH_EXTERIOR_FEATURE"
+                    },
+                    {
+                      "Key": "ENCLOSED_PORCH_EXTERIOR_FEATURE",
+                      "Value": "ENCLOSED_PORCH_EXTERIOR_FEATURE"
+                    },
+                    {
+                      "Key": "WRAP_AROUND_PORCH_EXTERIOR_FEATURE",
+                      "Value": "WRAP_AROUND_PORCH_EXTERIOR_FEATURE"
+                    },
+                    {
+                      "Key": "STOOP_EXTERIOR_FEATURE",
+                      "Value": "STOOP_EXTERIOR_FEATURE"
+                    },
+                    {
+                      "Key": "OUTDOOR_KITCHEN_EXTERIOR_FEATURE",
+                      "Value": "OUTDOOR_KITCHEN_EXTERIOR_FEATURE"
+                    },
+                    {
+                      "Key": "FIREPIT_EXTERIOR_FEATURE",
+                      "Value": "FIREPIT_EXTERIOR_FEATURE"
+                    },
+                    {
+                      "Key": "FIREPLACE_EXTERIOR_FEATURE",
+                      "Value": "FIREPLACE_EXTERIOR_FEATURE"
+                    }
+                  ]
+                }
+              ]
+            },
+            "Metadata": [
+              {
+                "ConverType": "None",
+                "MaxOccurs": "unbounded",
+                "MinOccurs": "0",
+                "Conditionally": "function execute(data,cx) {\r\n    var rtype = cx.FindValue(\"exteriorFeatureType\");\r\n    var values = cx.FindChildValues(\"photoType\");\r\n    if (rtype!='NONE' && values.length==0){\r\n        return { _output:true, _label: rtype+\"_EXTERIOR_FEATURE is required \"};    \r\n    }\r\n    return false;\r\n}"
+              }
+            ]
+          },
+          "Metadata": [
+            {
+              "ConverType": "None",
+              "MaxOccurs": "unbounded",
+              "MinOccurs": "0",
+              "Required": "True"
+            }
+          ]
+        },
+        "heatingSystems": {
+          "heatingType": {
+            "Metadata": [
+              {
+                "Name": "heatingType",
+                "DataType": "Enumerated",
+                "DisplayText": "Heating Type",
+                "Description": "User to select the best option to identify each heating system for each structure. If the structure has no heat source, the user must select the 'No Heat' option.",
+                "Required": "True",
+                "Enumeration": [
+                  {
+                    "Key": "NO_HEAT",
+                    "Value": "No Heat"
+                  },
+                  {
+                    "Key": "CENTRAL_HOT_AIR",
+                    "Value": "Central Hot Air"
+                  },
+                  {
+                    "Key": "HOT_WATER_RADIATORS",
+                    "Value": "Hotwater Radiators"
+                  },
+                  {
+                    "Key": "HOT_WATER_BASEBOARD",
+                    "Value": "Hotwater Baseboard"
+                  },
+                  {
+                    "Key": "ELECTRIC_BASEBOARD",
+                    "Value": "Electric Baseboard"
+                  },
+                  {
+                    "Key": "IN_WALL_HEATER",
+                    "Value": "In-wall Heater"
+                  },
+                  {
+                    "Key": "RADIANT_FLOOR",
+                    "Value": "Radiant Floor"
+                  },
+                  {
+                    "Key": "CENTRAL_HEATPUMP",
+                    "Value": "Central Heatpump"
+                  },
+                  {
+                    "Key": "DUCTLESS_HEATPUMP",
+                    "Value": "Ductless Heatpump"
+                  },
+                  {
+                    "Key": "DUCTLESS_HEAT",
+                    "Value": "Ductless Heat"
+                  },
+                  {
+                    "Key": "GEOTHERMAL",
+                    "Value": "Geothermal"
+                  },
+                  {
+                    "Key": "WALL_FURNACE",
+                    "Value": "Wall Furnace"
+                  }
+                ],
+                "UITooltip": "What type(s) of heating systems service this structure?",
+                "HelpTextId": "d55097ad217e49b5ad62f290442a4bc5"
+              }
+            ]
+          },
+          "Metadata": [
+            {
+              "ConverType": "None",
+              "MaxOccurs": "unbounded",
+              "MinOccurs": "0",
+              "Required": "True"
+            }
+          ]
+        },
+        "coolingSystems": {
+          "coolingType": {
+            "Metadata": [
+              {
+                "Name": "coolingType",
+                "DataType": "Enumerated",
+                "DisplayText": "Cooling Type",
+                "Description": "User to select the best option to identify each cooling system for each structure. If the structure has no cooling source, the user must select the 'None' option.",
+                "Required": "True",
+                "Enumeration": [
+                  {
+                    "Key": "NONE",
+                    "Value": "None"
+                  },
+                  {
+                    "Key": "CENTRAL_AIR_CONDITIONING",
+                    "Value": "Central Air Conditioning"
+                  },
+                  {
+                    "Key": "CENTRAL_HEATPUMP",
+                    "Value": "Central Heatpump"
+                  },
+                  {
+                    "Key": "DUCTLESS_HEATPUMP",
+                    "Value": "Ductless Heatpump"
+                  },
+                  {
+                    "Key": "DUCTLESS_AIR_CONDITIONING",
+                    "Value": "Ductless Air Conditioning"
+                  },
+                  {
+                    "Key": "WHOLE_HOUSE_FAN",
+                    "Value": "Whole House Fan"
+                  },
+                  {
+                    "Key": "EVAPORATIVE_COOLER",
+                    "Value": "Evaporative Cooler"
+                  },
+                  {
+                    "Key": "GEOTHERMAL",
+                    "Value": "Geothermal"
+                  }
+                ],
+                "UITooltip": "What type(s) of cooling systems service this structure?",
+                "HelpTextId": "5950b2cac4374697988456e3b99fc71c"
+              }
+            ]
+          },
+          "Metadata": [
+            {
+              "ConverType": "None",
+              "MaxOccurs": "unbounded",
+              "MinOccurs": "0",
+              "Required": "True"
+            }
+          ]
+        },
+        "uniformHeatingAndCoolingIndicator": {
+          "Metadata": [
+            {
+              "Name": "uniformHeatingAndCoolingIndicator",
+              "DataType": "Boolean",
+              "Required": "True",
+              "DisplayText": "Are both the heating and cooling elements the same for all units?",
+              "Description": "User to indicate if the heating and cooling elements for the sturcture are the same for all units within the same structure. True = Heating and Cooling elements are the same for all units within the structure. False = Different Heating and Cooling elements exist for other units in the structure.For example, if cooling is the same across all units within the structure, but heating for the structure varies such that one unit has  Central Hot Air and another uses  In Wall Heater then the user would select False.",
+              "UITooltip": "Are all heating and cooling systems the same for all units with living area?"
+            }
+          ]
+        },
+        "uniformHeatingAndCoolingDescription": {
+          "Metadata": [
+            {
+              "Name": "uniformHeatingAndCoolingDescription",
+              "DataType": "String",
+              "Conditionally": "function execute(data,cx){return cx.IsEmpty() && cx.FindValue('uniformHeatingAndCoolingIndicator')==false; }",
+              "DisplayText": "Description",
+              "Description": "User to provide a free form text description of the different heating and cooling systems that exist within the structure, specifying how these systems vary by unit.",
+              "UITooltip": "Describe the heating and cooling systems for the structure.",
+              "UIControl": "textarea"
+            }
+          ]
+        },
+        "cv_foundationSlabType": {
+          "Metadata": [
+            {
+              "Name": "FoundationConcertSlabType",
+              "DataType": "Boolean",
+              "DisplayText": "Concrete Slab?",
+              "Description": "Foundation Crawl Space Indicator"
+            }
+          ]
+        },
+        "cv_foundationCrawlSpaceType": {
+          "Metadata": [
+            {
+              "Name": "FoundationCrawlSpaceType",
+              "DataType": "Boolean",
+              "DisplayText": "Crawl Space?",
+              "Description": "Foundation Crawl Space Indicator"
+            }
+          ]
+        },
+        "cv_exteriorFeaturesRoofSurface": {
+          "Metadata": [
+            {
+              "Name": "cv_exteriorFeaturesRoofSurface",
+              "DataType": "String",
+              "DisplayText": "Roof Surface",
+              "Description": "Roof Surface",
+              "Required": "True",
+              "UIControl": "textarea"
+            }
+          ]
+        },
+        "cv_exteriorFeaturesFoundation": {
+          "Metadata": [
+            {
+              "Name": "cv_exteriorFeaturesFoundation",
+              "DataType": "String",
+              "DisplayText": "Foundation",
+              "Description": "Foundation",
+              "Required": "True",
+              "UIControl": "textarea"
+            }
+          ]
+        },
+        "cv_exteriorFeatures": {
+          "cv_featureType": {
+            "Metadata": [
+              {
+                "Name": "ExteriorFeatureType",
+                "DataType": "Enumerated",
+                "DisplayText": "Exterior Feature Type",
+                "Description": "Exterior Feature Type",
+                "Enumeration": [
+                  {
+                    "Key": "GuttersAndDownspouts",
+                    "Value": "Gutters And Downspouts"
+                  },
+                  {
+                    "Key": "WindowType",
+                    "Value": "Window Type"
+                  },
+                  {
+                    "Key": "WindowStormSash",
+                    "Value": "Window Storm Sash"
+                  },
+                  {
+                    "Key": "WindowScreens",
+                    "Value": "Window Screens"
+                  }
+                ]
+              }
+            ]
+          },
+          "cv_featureTypeDescription": {
+            "Metadata": [
+              {
+                "Name": "ExteriorFeatureTypeDescription",
+                "DataType": "String",
+                "Length": "25",
+                "DisplayText": "Description",
+                "Description": "Exterior Feature Type Description",
+                "UITooltip": "Exterior Feature Type Description",
+                "UIControl": "textarea"
+              }
+            ]
+          },
+          "Metadata": [
+            {
+              "ConverType": "None",
+              "MaxOccurs": "unbounded",
+              "MinOccurs": "0"
+            }
+          ]
+        },
+        "cv_atticFloor": {
+          "Metadata": [
+            {
+              "Name": "AtticFloor",
+              "DataType": "Boolean",
+              "DisplayText": "Flooring?",
+              "Description": "Attic Floor Indicator"
+            }
+          ]
+        },
+        "cv_atticHeated": {
+          "Metadata": [
+            {
+              "Name": "AtticHeated",
+              "DataType": "Boolean",
+              "DisplayText": "Heated?",
+              "Description": "Attic Heated Indicator"
+            }
+          ]
+        },
+        "cv_foundationSumpPump": {
+          "Metadata": [
+            {
+              "Name": "FoundationSumpPump",
+              "DataType": "Boolean",
+              "DisplayText": "Sump Pump?",
+              "Description": "Indicates that the property does have the foundation Sump Pump."
+            }
+          ]
+        },
+        "cv_heatingFuelDescription": {
+          "Metadata": [
+            {
+              "Name": "HeatingFuelDescription",
+              "DataType": "String",
+              "DisplayText": "Heating Fuel Description",
+              "Description": "A free-form text field used to describe the fuel used by the heating unit.",
+              "UIControl": "textarea"
+            }
+          ]
+        },
+        "cv_coolingIndividual": {
+          "Metadata": [
+            {
+              "Name": "CoolingIndividual",
+              "DataType": "Boolean",
+              "DisplayText": "Does the structure or unit have individual cooling units?",
+              "Description": "Indicates that the structure or unit has individual cooling units."
+            }
+          ]
+        },
+        "cv_photos": {
+          "photoType": {
+            "Metadata": [
+              {
+                "Name": "photoType",
+                "DataType": "Enumerated",
+                "DisplayText": "Photo Type",
+                "Description": "Photo Type",
+                "Required": "True",
+                "Enumeration": [
+                  {
+                    "Key": "VIEW_FRONT",
+                    "Value": "VIEW_FRONT"
+                  },
+                  {
+                    "Key": "VIEW_LEFT_SIDE",
+                    "Value": "VIEW_LEFT_SIDE"
+                  },
+                  {
+                    "Key": "VIEW_RIGHT_SIDE",
+                    "Value": "VIEW_RIGHT_SIDE"
+                  },
+                  {
+                    "Key": "VIEW_REAR",
+                    "Value": "VIEW_REAR"
+                  },
+                  {
+                    "Key": "STRUCTURE_FRONT",
+                    "Value": "STRUCTURE_FRONT"
+                  },
+                  {
+                    "Key": "STRUCTURE_LEFT_SIDE",
+                    "Value": "STRUCTURE_LEFT_SIDE"
+                  },
+                  {
+                    "Key": "STRUCTURE_RIGHT_SIDE",
+                    "Value": "STRUCTURE_RIGHT_SIDE"
+                  },
+                  {
+                    "Key": "STRUCTURE_REAR",
+                    "Value": "STRUCTURE_REAR"
+                  },
+                  {
+                    "Key": "OTHER",
+                    "Value": "OTHER"
+                  }
+                ]
+              }
+            ]
+          },
+          "Metadata": [
+            {
+              "ConverType": "None",
+              "MaxOccurs": "unbounded",
+              "MinOccurs": "0",
+              "Conditionally": "function execute(data,cx) {\r\n    var errors = [];\r\n    var values = cx.FindChildValues(\"photoType\");\r\n    var type = cx.FindValue(\"structureType\");\r\n    var attach = cx.FindValue(\"attachmentType\");\r\n\r\n    if (type=='DWELLING'){\r\n        if (attach=='DETACHED'||attach=='RIGHT_SEMI_DETACHED'){\r\n            if (values.indexOf('VIEW_RIGHT_SIDE')==-1){\r\n                errors.push(\"VIEW_RIGHT_SIDE\");\r\n            }\r\n        }\r\n        if (attach=='DETACHED'||attach=='LEFT_SEMI_DETACHED'){\r\n            if (values.indexOf('VIEW_LEFT_SIDE')==-1){\r\n                errors.push(\"VIEW_LEFT_SIDE\");\r\n            }\r\n        }    \r\n        if (values.indexOf('VIEW_FRONT')==-1){\r\n            errors.push(\"VIEW_FRONT\");\r\n        }\r\n        if (values.indexOf('VIEW_REAR')==-1){\r\n            errors.push(\"VIEW_REAR\");\r\n        }        \r\n        if (attach=='DETACHED'||attach=='RIGHT_SEMI_DETACHED'){\r\n            if (values.indexOf('STRUCTURE_RIGHT_SIDE')==-1){\r\n                errors.push(\"STRUCTURE_RIGHT_SIDE\");\r\n            }\r\n        }    \r\n        if (attach=='DETACHED'||attach=='LEFT_SEMI_DETACHED'){\r\n            if (values.indexOf('STRUCTURE_LEFT_SIDE')==-1){\r\n                errors.push(\"STRUCTURE_LEFT_SIDE\");\r\n            }\r\n        } \r\n    }\r\n\r\n\r\n    if (values.indexOf('STRUCTURE_FRONT')==-1){\r\n        errors.push(\"STRUCTURE_FRONT\");\r\n    }\r\n\r\n    if (values.indexOf('STRUCTURE_REAR')==-1){\r\n        errors.push(\"STRUCTURE_REAR\");\r\n    }\r\n\r\n    if (errors.length>0){\r\n        return { _output:true, _label: 'The photo(s) '+errors.join(', ')+\" are required.\"} ;\r\n    }\r\n   return false;\r\n}"
+            }
+          ]
+        },
+        "Metadata": [
+          {
+            "ConverType": "None",
+            "MaxOccurs": "unbounded",
+            "MinOccurs": "0",
+            "Required": "True"
+          }
+        ]
+      },
+      "cv_photos": {
+        "photoType": {
+          "Metadata": [
+            {
+              "Name": "photoType",
+              "DataType": "Enumerated",
+              "DisplayText": "Photo Type",
+              "Description": "Photo Type",
+              "Required": "True",
+              "Enumeration": [
+                {
+                  "Key": "STREET_LEFT",
+                  "Value": "STREET_LEFT"
+                },
+                {
+                  "Key": "STREET_RIGHT",
+                  "Value": "STREET_RIGHT"
+                },
+                {
+                  "Key": "SKETCH",
+                  "Value": "SKETCH"
+                },
+                {
+                  "Key": "OTHER",
+                  "Value": "OTHER"
+                }
+              ]
+            }
+          ]
+        },
+        "Metadata": [
+          {
+            "ConverType": "None",
+            "MaxOccurs": "unbounded",
+            "MinOccurs": "0",
+            "Conditionally": "function execute(data,cx) {\r\n    var values = cx.FindChildValues(\"photoType\");\r\n    var missing=[];\r\n    if (values.indexOf('STREET_LEFT') == -1){\r\n        missing.push('STREET_LEFT');        \r\n    }\r\n    if (values.indexOf('STREET_RIGHT') == -1){\r\n        missing.push('STREET_RIGHT');        \r\n    }\r\n    if (values.indexOf('SKETCH') == -1){\r\n        missing.push('SKETCH');        \r\n    }\r\n    if (missing.length>0){\r\n        return { _output:true, _label: 'The photo(s) '+missing.join(', ')+\" are required.\"};\r\n    }\r\n    return false;\r\n}"
+          }
+        ]
+      },
+      "Metadata": [
+        {
+          "Conditionally": "function execute(data,cx){\r\n    if (cx.IsEmpty())\r\n    {\r\n        return true;\r\n    }\r\n    if (cx.FindChildValues('structures[*].structureType').indexOf('DWELLING')==-1){\r\n        return { _output:true, _label:'No dwelling structure identified.'};\r\n    }\r\n\r\n    var roomTypes = cx.FindChildValues('structures[*].units[*].levels[*].rooms[*].roomType');\r\n    if (roomTypes.indexOf('KITCHEN')==-1 && roomTypes.indexOf('BATHROOM')==-1){\r\n        return { _output:true, _label:'The property needs at least one BATHROOM or KITCHEN.'};\r\n    }\r\n    \r\n    var finishedLivingAreas = cx.FindChildValues('structures[*].units[*].levels[*].finishedLivingArea');\r\n    if (roomTypes.length>0){\r\n        var total = 0;\r\n        finishedLivingAreas.forEach(function(finishedLiving){\r\n            total += finishedLiving\r\n        });\r\n        if (total<200){\r\n            return { _output:true, _label:'Sum of all finished areas on all levels within dwelling units is less than 200. Value is invalid'};\r\n        }       \r\n    }\r\n\r\n    return false;\r\n}"
+        }
+      ]
+    }
+  },
+  "Metadata": [
+    {
+      "DisplayText": "Inspection Property V2"
+    }
+  ]
+}
